@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>DTA</title>
+  {% load static %}
+  <!-- MDB icon -->
+  <link rel="icon" href="{% static 'store/img/mdb-favicon.ico' %}" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="{% static 'store/css/mdb.min.css' %}">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="{% static 'store/css/dash.css' %}">
+  <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
+
+<body class="homepage-v1 hidden-sn white-skin animated">
+  {% csrf_token %}
+      <!-- Navbar -->
+      <nav class="navbar fixed-top navbar-expand-lg  scrolling-navbar ">
+        
+        <div class="container">
+          <a class="navbar-brand font-weight-bold" href="/">
+            <strong>SHOP</strong>
+          </a>
+
+          <form class="search-form" role="search" action="{% url 'store:search' %}" method="GET">
+              <input name="query" id="browse_field" type="text" class="form-control" placeholder="Search">
+          </form>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold" href="#">
+                  <i class="fas fa-envelope blue-text"></i> Contact
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item ">
+                <a class="nav-link dark-grey-text font-weight-bold" href="#" data-toggle="modal"
+                  data-target="#cart-modal-ex">
+                  <span id="item-cart-counter" class="badge danger-color">4</span>
+                  <i class="fas fa-shopping-cart blue-text" aria-hidden="true"></i>
+                  <span class="clearfix d-none d-sm-inline-block">Cart</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar -->
+  
+    </header>
+    <!-- Navigation -->
+
+    <!-- Cart Modal -->
+  <div class="modal fade cart-modal" id="cart-modal-ex" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+    <!-- Content -->
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+
+        <h4 class="modal-title font-weight-bold dark-grey-text" id="myModalLabel">Your cart</h4>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+          <span aria-hidden="true">&times;</span>
+
+        </button>
+
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        {% if cart %}
+        <table id="table-cart" class="table table-hover">
+        {% else %}
+        <table id="table-cart" class="table table-hover hidden">
+        <div id="empty" class="container-fluid align-center">
+          <p>Your cart is empty yet.</p>
+        </div>
+        {% endif %}
+          <thead>
+            <tr>
+              <th>Product name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th></th>
+            </tr>
+
+          </thead>
+
+          <tbody id="cart-tbody">
+
+            {% for itm in cart %}
+            <tr id="tr-{{itm.id}}">
+              <td>{{itm.name}}</td>
+              <td>{{itm.price}}$</td>
+              <td class="tcount" id="nbr-{{itm.id}}">{{itm.nbr}}</td>
+              <td>
+                <a onclick="remove_from_cart('{{itm.id}}', '{{csrf_token}}')">
+                  <i class="fas fa-eraser"></i>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+
+        <a href="/checkout/">
+          <button href="/checkout/" class="btn btn-primary btn-rounded btn-sm">Checkout</button>
+        </a>
+      </div>
+
+      <!-- Footer -->
+    </div>
+    <!-- Content -->
+  </div>
+</div>
+<!-- Cart Modal -->
+
+    {% block content %}
+    {% endblock %}
+
+  <!-- Footer -->
+  <footer class="page-footer text-center text-md-left stylish-color-dark pt-0">
+    <div style="background-color: #4285f4;">
+      <div class="container">
+        <!-- Grid row -->
+        <div class="row py-4 d-flex align-items-center">
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+            <h6 class="mb-0 white-text">Get connected with us on social networks!</h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-7 text-center text-md-right">
+            <!-- Facebook -->
+            <a class="fb-ic ml-0 px-2">
+              <i class="fab fa-facebook-f white-text"> </i>
+            </a>
+            <!-- Twitter -->
+            <a class="tw-ic px-2">
+              <i class="fab fa-twitter white-text"> </i>
+            </a>
+            <!-- Google + -->
+            <a class="gplus-ic px-2">
+              <i class="fab fa-google-plus-g white-text"> </i>
+            </a>
+
+            <!-- Linkedin -->
+            <a class="li-ic px-2">
+              <i class="fab fa-linkedin-in white-text"> </i>
+            </a>
+            <!-- Instagram -->
+            <a class="ins-ic px-2">
+              <i class="fab fa-instagram white-text"> </i>
+            </a>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="container mt-5 mb-4 text-center text-md-left">
+      <div class="row mt-3">
+        <!-- First column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+          <h6 class="text-uppercase font-weight-bold">
+            <strong>Company name</strong>
+          </h6>
+          <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
+            consectetur
+            adipisicing elit.</p>
+        </div>
+        <!-- First column -->
+        <!-- Second column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase font-weight-bold">
+            <strong>Products</strong>
+          </h6>
+          <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a href="#!">MDBootstrap</a>
+          </p>
+          <p>
+            <a href="#!">MDWordPress</a>
+          </p>
+          <p>
+            <a href="#!">BrandFlow</a>
+          </p>
+          <p>
+            <a href="#!">Bootstrap Angular</a>
+          </p>
+        </div>
+        <!-- Second column -->
+
+        <!-- Third column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <h6 class="text-uppercase font-weight-bold">
+
+            <strong>Useful links</strong>
+
+          </h6>
+
+          <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+          <p>
+
+            <a href="#!">Your Account</a>
+
+          </p>
+
+          <p>
+
+            <a href="#!">Become an Affiliate</a>
+
+          </p>
+
+          <p>
+
+            <a href="#!">Shipping Rates</a>
+
+          </p>
+
+          <p>
+
+            <a href="#!">Help</a>
+
+          </p>
+
+        </div>
+        <!-- Third column -->
+
+        <!-- Fourth column -->
+        <div class="col-md-4 col-lg-3 col-xl-3">
+
+          <h6 class="text-uppercase font-weight-bold">
+
+            <strong>Contact</strong>
+
+          </h6>
+
+          <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+          <p>
+
+            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+
+          <p>
+
+            <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+
+          <p>
+
+            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+
+          <p>
+
+            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+        </div>
+        <!-- Fourth column -->
+
+      </div>
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright py-3 text-center">
+
+      <div class="container-fluid">
+
+        © 2019 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+
+      </div>
+
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'store/js/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'store/js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'store/js/bootstrap.min.js' %}">
+  </script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'store/js/mdb-4.8.11.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'store/js/click.js' %}"></script>
+  <script>
+    const csrf = '{{csrf_token}}';
+  </script>
+
+</body>
+
+</html>

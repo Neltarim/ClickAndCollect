@@ -1,0 +1,90 @@
+{% extends 'store/index.html' %}
+{% block item_wrapper %}
+<!-- Grid column -->
+<div class="col-lg-3 col-md-6 mb-4">
+
+    <!-- Card -->
+    <div class="card card-ecommerce">
+
+      <!-- Card image -->
+      <div class="view overlay">
+
+        <img src="{{ item.img_one }}" class="img-fluid"
+          alt="sample image">
+
+        <a>
+
+          <div class="mask rgba-white-slight"></div>
+
+        </a>
+
+      </div>
+      <!-- Card image -->
+
+      <!-- Card content -->
+      <div class="card-body">
+
+        <!-- Category & Title -->
+        <h5 class="card-title mb-1">
+
+          <strong>
+
+            <a href="" class="dark-grey-text">{{ item.name }}</a>
+
+          </strong>
+
+        </h5>
+
+        {% if item.available %}
+        <span class="badge badge-danger mb-2">Displonible</span>
+        {% endif %}
+
+        <!-- Rating -->
+        <ul class="rating">
+          {% for i in '12345'|make_list %}
+            {% if item.rate >= forloop.counter %}
+              <li>
+                <i class="fas fa-star blue-text"></i>
+              </li>
+            {% else %}
+              <li>
+                <i class="fas fa-star grey-text"></i>
+              </li>
+              {% endif %}
+              {% endfor %}
+        </ul>
+
+        <!-- Card footer -->
+        <div class="card-footer pb-0">
+
+          <div class="row mb-0">
+
+            <span class="float-left">
+
+              <strong>{{ item.price }}$</strong>
+
+            </span>
+
+            <span class="float-right">
+
+              <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+
+                <i class="fas fa-shopping-cart ml-3"></i>
+
+              </a>
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Card content -->
+
+    </div>
+    <!-- Card -->
+
+  </div>
+  <!-- Grid column -->
+  {% endblock item_wrapper %}

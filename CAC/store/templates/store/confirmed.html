@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>DTA</title>
+  {% load static %}
+  <!-- MDB icon -->
+  <link rel="icon" href="{% static 'store/img/mdb-favicon.ico' %}" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="{% static 'store/css/mdb.min.css' %}">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="{% static 'store/css/dash.css' %}">
+  <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
+
+<body class="homepage-v1 hidden-sn white-skin animated">
+    <div id="home" class="view jarallax" style="background-color:rgb(60, 126, 134);" data-jarallax='{"speed": 0.2}'>
+        <div class="mask rgba-black-strong wow fadeIn" data-wow-delay="0.4s">
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="row smooth-scroll">
+            <div class="col-md-12">
+                <div class="text-center text-white">
+                <div class="wow fadeInDown"  data-wow-delay=".2s">
+                    <h2 class="font-weight-bold display-3 mb-0">{{order.id}}</h2>
+                    <hr class="hr-light my-3 clearfix d-none d-md-block">
+                    <h4 class="pt-2 pb-3">You can now take out your order at our store, don't forget your code ! <strong><span> :)</span></strong></h4>
+                </div>
+                <hr><hr>
+                <a class="btn blue-gradient btn-rounded text-uppercase wow fadeInUp z-depth-2" data-wow-delay=".2s" href="#creation" data-offset="100">
+                    <span>Retour</span>
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'store/js/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'store/js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'store/js/bootstrap.min.js' %}">
+  </script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'store/js/mdb-4.8.11.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'store/js/click.js' %}"></script>
+  <script>
+    const csrf = '{{csrf_token}}';
+  </script>
+
+</body>
+
+</html>

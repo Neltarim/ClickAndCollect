@@ -1,0 +1,64 @@
+.commercial {
+    color:  #30649f;
+}
+
+.nbr-blue {
+    color: #30649f;
+}
+
+.dark-bg-admin {
+    background: #363947;
+}
+.dark-card-admin {
+    background: #262a37 !important;
+}
+.dark-mode-card-transparent {
+    background: 0 0 !important;
+}
+.dark-card-bg,
+.dark-card-bg::after,
+.dark-sidenav-bg::after {
+    background: #262a37;
+}
+.dark-card-bg {
+    position: relative;
+}
+.dark-card-bg::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+.navy-blue-bg-a {
+    background: #393949;
+    border-bottom: 1px solid #000;
+}
+
+.table-btn {
+    margin-top: 80%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .table-btn {
+        margin-top: 0%;
+    }
+}
+
+.purple-dark-gradient {
+    /* fallback for old browsers */
+    background: #3851bc;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to left, rgba(56, 81, 188, 0.55), rgba(118, 75, 162, 0.55));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to left, rgba(56, 81, 188, 0.55), rgba(118, 75, 162, 0.55))
+  }
+
+.card-ecommerce {
+    border-width: 10rem;
+}

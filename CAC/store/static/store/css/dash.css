@@ -1,0 +1,31 @@
+html,
+body,
+.view.jarallax {
+    height: 100%;
+    min-height: 100%;
+}
+
+
+.commercial {
+    color:  #30649f;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.sections-view {
+    border-color: black;
+    border-radius: 3rem;
+    border-width: 10rem;
+}
+
+
+
+@media (min-width: 1500px) {
+    .sections-view {
+        margin-left: 15rem;
+        width: auto;
+    }
+}

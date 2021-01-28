@@ -1,0 +1,13 @@
+{% extends 'store/nav.html' %}
+{% block content %}
+
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    {% for key, value in session_data %}
+        <p>{{key}}   {{value}}</p>
+    {% endfor %}
+
+
+{% endblock %}
